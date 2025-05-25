@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<style>
+    .admin-card {
+        @apply bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300;
+    }
+    
+    .admin-icon {
+        @apply text-3xl text-emerald-500 mb-4;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="bg-gray-100 min-h-screen py-8">
+    <div class="container mx-auto px-4">
+        <div class="mb-8">
+            <h1 class="text-2xl font-bold text-gray-800 mb-2">Admin Dashboard</h1>
+            <p class="text-gray-600">Selamat datang, {{ current_user.username }}! Kelola semua konten masjid dari dashboard ini.</p>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="admin-card">
+                <div class="admin-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <h3 class="text-gray-500 mb-1 text-sm uppercase tracking-wider">Total Kajian</h3>
+                <p class="text-3xl font-bold text-gray-800">{{ total_lectures }}</p>
+                <a href="{{ url_for('admin.lectures') }}" class="text-emerald-500 text-sm hover:text-emerald-700 mt-2 inline-block">
+                    Kelola <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+            
+            <div class="admin-card">
+                <div class="admin-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h3 class="text-gray-500 mb-1 text-sm uppercase tracking-wider">Total Artikel</h3>
+                <p class="text-3xl font-bold text-gray-800">{{ total_articles }}</p>
+                <a href="{{ url_for('admin.articles') }}" class="text-emerald-500 text-sm hover:text-emerald-700 mt-2 inline-block">
+                    Kelola <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+            
+            <div class="admin-card">
+                <div class="admin-icon">
+                    <i class="fas fa-images"></i>
+                </div>
+                <h3 class="text-gray-500 mb-1 text-sm uppercase tracking-wider">Total Foto Galeri</h3>
+                <p class="text-3xl font-bold text-gray-800">{{ total_gallery }}</p>
+                <a href="{{ url_for('admin.gallery') }}" class="text-emerald-500 text-sm hover:text-emerald-700 mt-2 inline-block">
+                    Kelola <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+            
+            <div class="admin-card">
+                <div class="admin-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="text-gray-500 mb-1 text-sm uppercase tracking-wider">Total Pengguna</h3>
+                <p class="text-3xl font-bold text-gray-800">{{ total_users }}</p>
+                <a href="#" class="text-emerald-500 text-sm hover:text-emerald-700 mt-2 inline-block">
+                    Kelola <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Aksi Cepat</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <a href="{{ url_for('admin.create_lecture') }}" class="btn-primary py-3 px-4 flex items-center justify-center">
+                    <i class="fas fa-plus-circle mr-2"></i> Tambah Kajian Baru
+                </a>
+                <a href="#" class="btn-secondary py-3 px-4 flex items-center justify-center">
+                    <i class="fas fa-plus-circle mr-2"></i> Tambah Artikel Baru
+                </a>
+                <a href="{{ url_for('admin.mosque_info') }}" class="bg-purple-500 hover:bg-purple-600 text-white font-medium py-3 px-4 rounded transition duration-300 flex items-center justify-center">
+                    <i class="fas fa-mosque mr-2"></i> Pengaturan Masjid
+                </a>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Upcoming Lectures -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold text-gray-800">Kajian Mendatang</h2>
+                    <a href="{{ url_for('admin.lectures') }}" class="text-emerald-500 hover:text-emerald-700 text-sm">
+                        Lihat Semua <i class="fas fa-chevron-right ml-1"></i>
+                    </a>
+                </div>
+                
+                {% if upcoming_lectures %}
+                    <div class="space-y-4">
+                        {% for lecture in upcoming_lectures %}
+                            <div class="border-b border-gray-100 pb-3 last:border-0 last:pb-0">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h3 class="font-semibold text-gray-800">{{ lecture.title }}</h3>
+                                        <div class="text-gray-500 text-sm mt-1">
+                                            <i class="far fa-calendar-alt mr-1"></i> {{ lecture.date.strftime('%d %b %Y, %H:%M') }}
+                                        </div>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <a href="#" class="text-blue-500 hover:text-blue-700">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="#" class="text-red-500 hover:text-red-700">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="text-gray-500 italic">Tidak ada kajian mendatang.</p>
+                {% endif %}
+            </div>
+
+            <!-- Recent Articles -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold text-gray-800">Artikel Terbaru</h2>
+                    <a href="{{ url_for('admin.articles') }}" class="text-emerald-500 hover:text-emerald-700 text-sm">
+                        Lihat Semua <i class="fas fa-chevron-right ml-1"></i>
+                    </a>
+                </div>
+                
+                {% if recent_articles %}
+                    <div class="space-y-4">
+                        {% for article in recent_articles %}
+                            <div class="border-b border-gray-100 pb-3 last:border-0 last:pb-0">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h3 class="font-semibold text-gray-800">{{ article.title }}</h3>
+                                        <div class="text-gray-500 text-sm mt-1">
+                                            <i class="far fa-clock mr-1"></i> {{ article.created_at.strftime('%d %b %Y') }}
+                                        </div>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <a href="#" class="text-blue-500 hover:text-blue-700">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="#" class="text-red-500 hover:text-red-700">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="text-gray-500 italic">Tidak ada artikel terbaru.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

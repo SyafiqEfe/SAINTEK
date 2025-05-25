@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="bg-amber-600 py-16 text-white">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">Artikel Edukasi</h1>
+        <p class="text-lg opacity-90 max-w-3xl mx-auto">Eksplorasi artikel-artikel informatif tentang integrasi sains dan teknologi dalam perspektif Islam.</p>
+    </div>
+</div>
+
+<div class="container mx-auto px-4 py-8">
+    <!-- Categories -->
+    <div class="flex flex-wrap justify-center gap-3 mb-8">
+        <a href="{{ url_for('article.index') }}" class="{% if not current_category %}bg-amber-500 text-white{% else %}bg-gray-100 text-gray-700 hover:bg-gray-200{% endif %} py-2 px-4 rounded-full text-sm font-medium transition duration-300">
+            Semua
+        </a>
+        
+        {% for category in categories %}
+            <a href="{{ url_for('article.index', category=category.id) }}" class="{% if current_category == category.id %}bg-amber-500 text-white{% else %}bg-gray-100 text-gray-700 hover:bg-gray-200{% endif %} py-2 px-4 rounded-full text-sm font-medium transition duration-300">
+                {{ category.name }}
+            </a>
+        {% endfor %}
+    </div>
+    
+    <!-- Articles Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+        {% if articles.items %}
+            {% for article in articles.items %}
+                <div class="card group">
+                    <div class="relative h-48 bg-amber-100 overflow-hidden">
+                        {% if article.image %}
+                            <img src="{{ url_for('static', filename='uploads/articles/' + article.image) }}" alt="{{ article.title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        {% else %}
+                            <div class="flex items-center justify-center h-full text-amber-500">
+                                <i class="fas fa-book-open text-5xl"></i>
+                            </div>
+                        {% endif %}
+                        {% if article.category %}
+                            <span class="absolute top-4 right-4 bg-amber-500 text-white text-xs py-1 px-2 rounded">
+                                {{ article.category.name }}
+                            </span>
+                        {% endif %}
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2 group-hover:text-amber-600 transition">
+                            <a href="{{ url_for('article.detail', id=article.id) }}">{{ article.title }}</a>
+                        </h3>
+                        {% if article.summary %}
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">{{ article.summary }}</p>
+                        {% endif %}
+                        <div class="flex justify-between items-center mt-4">
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i class="far fa-clock mr-2"></i>
+                                <span>{{ article.created_at.strftime('%d %b %Y') }}</span>
+                            </div>
+                            <a href="{{ url_for('article.detail', id=article.id) }}" class="text-amber-500 hover:text-amber-700 text-sm font-medium">
+                                Baca Selengkapnya <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-span-full text-center py-8">
+                <p class="text-gray-500">Tidak ada artikel yang ditemukan dengan kategori yang dipilih.</p>
+            </div>
+        {% endif %}
+    </div>
+    
+    <!-- Pagination -->
+    {% if articles.pages > 1 %}
+        <div class="flex justify-center">
+            <nav class="inline-flex rounded-md shadow">
+                {% if articles.has_prev %}
+                    <a href="{{ url_for('article.index', page=articles.prev_num, category=current_category) }}" class="py-2 px-4 bg-white border border-gray-300 rounded-l-md text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                {% else %}
+                    <span class="py-2 px-4 bg-gray-100 border border-gray-300 rounded-l-md text-gray-400 cursor-not-allowed">
+                        <i class="fas fa-chevron-left"></i>
+                    </span>
+                {% endif %}
+                
+                {% for page_num in articles.iter_pages(left_edge=1, right_edge=1, left_current=2, right_current=2) %}
+                    {% if page_num %}
+                        {% if articles.page == page_num %}
+                            <span class="py-2 px-4 bg-amber-500 text-white border border-amber-500">
+                                {{ page_num }}
+                            </span>
+                        {% else %}
+                            <a href="{{ url_for('article.index', page=page_num, category=current_category) }}" class="py-2 px-4 bg-white text-gray-700 hover:bg-gray-50 border border-gray-300">
+                                {{ page_num }}
+                            </a>
+                        {% endif %}
+                    {% else %}
+                        <span class="py-2 px-4 bg-white border border-gray-300 text-gray-700">
+                            ...
+                        </span>
+                    {% endif %}
+                {% endfor %}
+                
+                {% if articles.has_next %}
+                    <a href="{{ url_for('article.index', page=articles.next_num, category=current_category) }}" class="py-2 px-4 bg-white border border-gray-300 rounded-r-md text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                {% else %}
+                    <span class="py-2 px-4 bg-gray-100 border border-gray-300 rounded-r-md text-gray-400 cursor-not-allowed">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+                {% endif %}
+            </nav>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

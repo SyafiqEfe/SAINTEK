@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="bg-purple-600 py-16 text-white">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">Galeri Masjid</h1>
+        <p class="text-lg opacity-90 max-w-3xl mx-auto">Dokumentasi visual dari berbagai kegiatan masjid termasuk kajian sains dan teknologi Islam.</p>
+    </div>
+</div>
+
+<div class="container mx-auto px-4 py-8">
+    <!-- Categories -->
+    <div class="flex flex-wrap justify-center gap-3 mb-8">
+        <a href="{{ url_for('gallery.index') }}" class="{% if not current_category %}bg-purple-500 text-white{% else %}bg-gray-100 text-gray-700 hover:bg-gray-200{% endif %} py-2 px-4 rounded-full text-sm font-medium transition duration-300">
+            Semua
+        </a>
+        
+        {% for category in categories %}
+            <a href="{{ url_for('gallery.index', category=category.id) }}" class="{% if current_category == category.id %}bg-purple-500 text-white{% else %}bg-gray-100 text-gray-700 hover:bg-gray-200{% endif %} py-2 px-4 rounded-full text-sm font-medium transition duration-300">
+                {{ category.name }}
+            </a>
+        {% endfor %}
+    </div>
+    
+    <!-- Gallery Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+        {% if images.items %}
+            {% for image in images.items %}
+                <div class="card group h-64 overflow-hidden">
+                    <a href="{{ url_for('gallery.detail', id=image.id) }}" class="block h-full relative">
+                        {% if image.image_path %}
+                            <img src="{{ url_for('static', filename='uploads/gallery/' + image.image_path) }}" alt="{{ image.title }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        {% else %}
+                            <div class="flex items-center justify-center h-full bg-purple-100 text-purple-500">
+                                <i class="fas fa-image text-5xl"></i>
+                            </div>
+                        {% endif %}
+                        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-60 transition duration-300"></div>
+                        <div class="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition duration-300">
+                            <h3 class="text-white font-semibold">{{ image.title }}</h3>
+                            {% if image.event_date %}
+                                <p class="text-gray-200 text-sm">{{ image.event_date.strftime('%d %B %Y') }}</p>
+                            {% endif %}
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-span-full text-center py-8">
+                <p class="text-gray-500">Tidak ada gambar yang ditemukan dalam kategori ini.</p>
+            </div>
+        {% endif %}
+    </div>
+    
+    <!-- Pagination -->
+    {% if images.pages > 1 %}
+        <div class="flex justify-center">
+            <nav class="inline-flex rounded-md shadow">
+                {% if images.has_prev %}
+                    <a href="{{ url_for('gallery.index', page=images.prev_num, category=current_category) }}" class="py-2 px-4 bg-white border border-gray-300 rounded-l-md text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                {% else %}
+                    <span class="py-2 px-4 bg-gray-100 border border-gray-300 rounded-l-md text-gray-400 cursor-not-allowed">
+                        <i class="fas fa-chevron-left"></i>
+                    </span>
+                {% endif %}
+                
+                {% for page_num in images.iter_pages(left_edge=1, right_edge=1, left_current=2, right_current=2) %}
+                    {% if page_num %}
+                        {% if images.page == page_num %}
+                            <span class="py-2 px-4 bg-purple-500 text-white border border-purple-500">
+                                {{ page_num }}
+                            </span>
+                        {% else %}
+                            <a href="{{ url_for('gallery.index', page=page_num, category=current_category) }}" class="py-2 px-4 bg-white text-gray-700 hover:bg-gray-50 border border-gray-300">
+                                {{ page_num }}
+                            </a>
+                        {% endif %}
+                    {% else %}
+                        <span class="py-2 px-4 bg-white border border-gray-300 text-gray-700">
+                            ...
+                        </span>
+                    {% endif %}
+                {% endfor %}
+                
+                {% if images.has_next %}
+                    <a href="{{ url_for('gallery.index', page=images.next_num, category=current_category) }}" class="py-2 px-4 bg-white border border-gray-300 rounded-r-md text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                {% else %}
+                    <span class="py-2 px-4 bg-gray-100 border border-gray-300 rounded-r-md text-gray-400 cursor-not-allowed">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+                {% endif %}
+            </nav>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
