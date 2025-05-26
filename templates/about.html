@@ -1,139 +1,246 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <div class="bg-emerald-700 py-16 text-white">
-    <div class="container mx-auto px-4 text-center">
-        <h1 class="text-3xl md:text-4xl font-bold mb-4">Tentang Kami</h1>
-        <p class="text-lg opacity-90 max-w-3xl mx-auto">Mengenal lebih dekat Masjid Digital sebagai pusat kajian sains dan teknologi dalam perspektif Islam.</p>
-    </div>
+  <div class="container mx-auto px-4 text-center">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">Tentang Kami</h1>
+    <p class="text-lg opacity-90 max-w-3xl mx-auto">
+      Mengenal lebih dekat Masjid Digital sebagai pusat kajian sains dan
+      teknologi dalam perspektif Islam.
+    </p>
+  </div>
 </div>
 
 <div class="container mx-auto px-4 py-12">
-    <div class="max-w-4xl mx-auto">
-        <!-- Vision & Mission -->
-        <div class="mb-12">
-            <div class="flex items-center mb-6">
-                <div class="h-1 w-16 bg-emerald-500 mr-4"></div>
-                <h2 class="text-2xl font-bold text-gray-800">Visi & Misi</h2>
-            </div>
-            
-            <div class="bg-white p-6 rounded-lg shadow-md mb-6">
-                <h3 class="text-xl font-semibold mb-4 text-emerald-700">Visi</h3>
-                <p class="text-gray-700 mb-4">
-                    {% if mosque_info and mosque_info.vision %}
-                        {{ mosque_info.vision }}
-                    {% else %}
-                        Menjadi pusat unggulan dalam pengembangan dan integrasi kajian sains dan teknologi dengan nilai-nilai Islam, serta menjadi jembatan antara tradisi keilmuan Islam klasik dengan perkembangan ilmu pengetahuan modern.
-                    {% endif %}
-                </p>
-            </div>
-            
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-xl font-semibold mb-4 text-emerald-700">Misi</h3>
-                <ul class="list-disc pl-5 text-gray-700 space-y-2">
-                    {% if mosque_info and mosque_info.mission %}
-                        <li>{{ mosque_info.mission }}</li>
-                    {% else %}
-                        <li>Menyelenggarakan kajian-kajian berkualitas yang mengintegrasikan perspektif Islam dengan sains dan teknologi.</li>
-                        <li>Mendokumentasikan dan menyebarluaskan kontribusi ilmuwan Muslim dalam perkembangan sains dan teknologi sepanjang sejarah.</li>
-                        <li>Membangun kesadaran masyarakat tentang pentingnya integrasi nilai-nilai Islam dalam pengembangan sains dan teknologi modern.</li>
-                        <li>Memfasilitasi pengembangan penelitian dan inovasi yang selaras dengan nilai-nilai Islam.</li>
-                        <li>Membangun jaringan kerjasama dengan berbagai institusi pendidikan, riset, dan keagamaan untuk memperkuat integrasi sains dan Islam.</li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-        
-        <!-- History -->
-        <div class="mb-12">
-            <div class="flex items-center mb-6">
-                <div class="h-1 w-16 bg-emerald-500 mr-4"></div>
-                <h2 class="text-2xl font-bold text-gray-800">Sejarah</h2>
-            </div>
-            
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <p class="text-gray-700 mb-4">
-                    {% if mosque_info and mosque_info.history %}
-                        {{ mosque_info.history }}
-                    {% else %}
-                        Masjid Digital didirikan pada tahun 2020 oleh sekelompok akademisi dan profesional Muslim yang memiliki keprihatinan terhadap kesenjangan antara kajian Islam dan perkembangan sains modern. Berawal dari diskusi-diskusi kecil dan kajian online selama masa pandemi, inisiatif ini kemudian berkembang menjadi pusat kajian sains dan teknologi Islam yang lebih terstruktur.
-                    {% endif %}
-                </p>
-                <p class="text-gray-700 mb-4">
-                    Dengan dukungan dari berbagai pihak, Masjid Digital terus berkembang dan memperluas jangkauannya, tidak hanya dalam bentuk kajian tatap muka, tetapi juga melalui platform digital yang dapat diakses oleh masyarakat luas di seluruh Indonesia dan bahkan dunia.
-                </p>
-                <p class="text-gray-700">
-                    Saat ini, Masjid Digital telah menjadi salah satu rujukan dalam kajian integrasi sains dan Islam, dengan ribuan jamaah yang berpartisipasi dalam berbagai kegiatan dan mengakses konten-konten edukatif yang disediakan.
-                </p>
-            </div>
-        </div>
-        
-        <!-- Our Team -->
-        <div class="mb-12">
-            <div class="flex items-center mb-6">
-                <div class="h-1 w-16 bg-emerald-500 mr-4"></div>
-                <h2 class="text-2xl font-bold text-gray-800">Tim Kami</h2>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <div class="w-24 h-24 rounded-full bg-gray-300 mx-auto mb-4 overflow-hidden">
-                        <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Dr. Ahmad Faruqi" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="text-lg font-semibold text-gray-800">Dr. Ahmad Faruqi</h3>
-                    <p class="text-emerald-600 text-sm mb-2">Ketua Pengurus</p>
-                    <p class="text-gray-600 text-sm">Doktor Fisika Teoretis dengan keahlian dalam integrasi sains dan Islam.</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <div class="w-24 h-24 rounded-full bg-gray-300 mx-auto mb-4 overflow-hidden">
-                        <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Prof. Aminah Zahra" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="text-lg font-semibold text-gray-800">Prof. Aminah Zahra</h3>
-                    <p class="text-emerald-600 text-sm mb-2">Kepala Divisi Kajian</p>
-                    <p class="text-gray-600 text-sm">Profesor Biologi dengan spesialisasi sejarah sains Islam.</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <div class="w-24 h-24 rounded-full bg-gray-300 mx-auto mb-4 overflow-hidden">
-                        <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Ir. Hasan Mahmud" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="text-lg font-semibold text-gray-800">Ir. Hasan Mahmud</h3>
-                    <p class="text-emerald-600 text-sm mb-2">Kepala Divisi Teknologi</p>
-                    <p class="text-gray-600 text-sm">Insinyur Teknologi Informasi dengan pengalaman 15 tahun di bidang IT.</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Programs -->
-        <div>
-            <div class="flex items-center mb-6">
-                <div class="h-1 w-16 bg-emerald-500 mr-4"></div>
-                <h2 class="text-2xl font-bold text-gray-800">Program Unggulan</h2>
-            </div>
-            
-            <div class="space-y-4">
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-lg font-semibold mb-2 text-emerald-700">Kajian Sains & Islam</h3>
-                    <p class="text-gray-700">Kajian mingguan yang membahas integrasi berbagai cabang ilmu sains dengan perspektif Islam, dibawakan oleh akademisi dan ulama yang kompeten di bidangnya.</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-lg font-semibold mb-2 text-emerald-700">Workshop Teknologi Islami</h3>
-                    <p class="text-gray-700">Workshop praktis yang mengajarkan keterampilan teknologi dengan memperhatikan aspek etika dan nilai-nilai Islam.</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-lg font-semibold mb-2 text-emerald-700">Seminar Ilmuwan Muslim</h3>
-                    <p class="text-gray-700">Seminar berkala yang memperkenalkan kontribusi ilmuwan Muslim sepanjang sejarah dan relevansinya dengan perkembangan sains modern.</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-lg font-semibold mb-2 text-emerald-700">Perpustakaan Digital</h3>
-                    <p class="text-gray-700">Koleksi buku, jurnal, dan artikel tentang sains dan teknologi dalam perspektif Islam yang dapat diakses secara online.</p>
-                </div>
-            </div>
-        </div>
+  <div class="max-w-4xl mx-auto">
+    <!-- Vision & Mission -->
+    <div class="mb-12">
+      <div class="flex items-center mb-6">
+        <div class="h-1 w-16 bg-emerald-500 mr-4"></div>
+        <h2 class="text-2xl font-bold text-gray-800">Visi & Misi</h2>
+      </div>
+
+      <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+        <h3 class="text-xl font-semibold mb-4 text-emerald-700">Visi</h3>
+        <p class="text-gray-700 mb-4">
+          {% if mosque_info and mosque_info.vision %} {{ mosque_info.vision }}
+          {% else %} Menjadi pusat unggulan dalam pengembangan dan integrasi
+          kajian sains dan teknologi dengan nilai-nilai Islam, serta menjadi
+          jembatan antara tradisi keilmuan Islam klasik dengan perkembangan ilmu
+          pengetahuan modern. {% endif %}
+        </p>
+      </div>
+
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h3 class="text-xl font-semibold mb-4 text-emerald-700">Misi</h3>
+        <ul class="list-disc pl-5 text-gray-700 space-y-2">
+          {% if mosque_info and mosque_info.mission %}
+          <li>{{ mosque_info.mission }}</li>
+          {% else %}
+          <li>
+            Menyelenggarakan kajian-kajian berkualitas yang mengintegrasikan
+            perspektif Islam dengan sains dan teknologi.
+          </li>
+          <li>
+            Mendokumentasikan dan menyebarluaskan kontribusi ilmuwan Muslim
+            dalam perkembangan sains dan teknologi sepanjang sejarah.
+          </li>
+          <li>
+            Membangun kesadaran masyarakat tentang pentingnya integrasi
+            nilai-nilai Islam dalam pengembangan sains dan teknologi modern.
+          </li>
+          <li>
+            Memfasilitasi pengembangan penelitian dan inovasi yang selaras
+            dengan nilai-nilai Islam.
+          </li>
+          <li>
+            Membangun jaringan kerjasama dengan berbagai institusi pendidikan,
+            riset, dan keagamaan untuk memperkuat integrasi sains dan Islam.
+          </li>
+          {% endif %}
+        </ul>
+      </div>
     </div>
+
+    <!-- History -->
+    <div class="mb-12">
+      <div class="flex items-center mb-6">
+        <div class="h-1 w-16 bg-emerald-500 mr-4"></div>
+        <h2 class="text-2xl font-bold text-gray-800">Sejarah</h2>
+      </div>
+
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <p class="text-gray-700 mb-4">
+          {% if mosque_info and mosque_info.history %} {{ mosque_info.history }}
+          {% else %} Masjid Digital didirikan pada tahun 2020 oleh sekelompok
+          akademisi dan profesional Muslim yang memiliki keprihatinan terhadap
+          kesenjangan antara kajian Islam dan perkembangan sains modern. Berawal
+          dari diskusi-diskusi kecil dan kajian online selama masa pandemi,
+          inisiatif ini kemudian berkembang menjadi pusat kajian sains dan
+          teknologi Islam yang lebih terstruktur. {% endif %}
+        </p>
+        <p class="text-gray-700 mb-4">
+          Dengan dukungan dari berbagai pihak, Masjid Digital terus berkembang
+          dan memperluas jangkauannya, tidak hanya dalam bentuk kajian tatap
+          muka, tetapi juga melalui platform digital yang dapat diakses oleh
+          masyarakat luas di seluruh Indonesia dan bahkan dunia.
+        </p>
+        <p class="text-gray-700">
+          Saat ini, Masjid Digital telah menjadi salah satu rujukan dalam kajian
+          integrasi sains dan Islam, dengan ribuan jamaah yang berpartisipasi
+          dalam berbagai kegiatan dan mengakses konten-konten edukatif yang
+          disediakan.
+        </p>
+      </div>
+    </div>
+
+    <!-- Our Team -->
+    <div class="mb-12">
+      <div class="flex items-center mb-6">
+        <div class="h-1 w-16 bg-emerald-500 mr-4"></div>
+        <h2 class="text-2xl font-bold text-gray-800">Tim Kami</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-md text-center">
+          <div
+            class="w-24 h-24 rounded-full bg-gray-300 mx-auto mb-4 overflow-hidden"
+          >
+            <img
+              src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              alt="Dr. Ahmad Faruqi"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <h3 class="text-lg font-semibold text-gray-800">Dr. Ahmad Faruqi</h3>
+          <p class="text-emerald-600 text-sm mb-2">Ketua Pengurus</p>
+          <p class="text-gray-600 text-sm">
+            Doktor Fisika Teoretis dengan keahlian dalam integrasi sains dan
+            Islam.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md text-center">
+          <div
+            class="w-24 h-24 rounded-full bg-gray-300 mx-auto mb-4 overflow-hidden"
+          >
+            <img
+              src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              alt="Prof. Aminah Zahra"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <h3 class="text-lg font-semibold text-gray-800">
+            Prof. Aminah Zahra
+          </h3>
+          <p class="text-emerald-600 text-sm mb-2">Kepala Divisi Kajian</p>
+          <p class="text-gray-600 text-sm">
+            Profesor Biologi dengan spesialisasi sejarah sains Islam.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md text-center">
+          <div
+            class="w-24 h-24 rounded-full bg-gray-300 mx-auto mb-4 overflow-hidden"
+          >
+            <img
+              src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              alt="Ir. Hasan Mahmud"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <h3 class="text-lg font-semibold text-gray-800">Ir. Hasan Mahmud</h3>
+          <p class="text-emerald-600 text-sm mb-2">Kepala Divisi Teknologi</p>
+          <p class="text-gray-600 text-sm">
+            Insinyur Teknologi Informasi dengan pengalaman 15 tahun di bidang
+            IT.
+          </p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md text-center">
+          <div
+            class="w-24 h-24 rounded-full bg-gray-300 mx-auto mb-4 overflow-hidden"
+          >
+            <img
+              src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              alt="Ir. Hasan Mahmud"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <h3 class="text-lg font-semibold text-gray-800">Ir. Hasan Mahmud</h3>
+          <p class="text-emerald-600 text-sm mb-2">Kepala Divisi Teknologi</p>
+          <p class="text-gray-600 text-sm">
+            Insinyur Teknologi Informasi dengan pengalaman 15 tahun di bidang
+            IT.
+          </p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md text-center">
+          <div
+            class="w-24 h-24 rounded-full bg-gray-300 mx-auto mb-4 overflow-hidden"
+          >
+            <img
+              src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              alt="Ir. Hasan Mahmud"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <h3 class="text-lg font-semibold text-gray-800">Ir. Hasan Mahmud</h3>
+          <p class="text-emerald-600 text-sm mb-2">Kepala Divisi Teknologi</p>
+          <p class="text-gray-600 text-sm">
+            Insinyur Teknologi Informasi dengan pengalaman 15 tahun di bidang
+            IT.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Programs -->
+    <div>
+      <div class="flex items-center mb-6">
+        <div class="h-1 w-16 bg-emerald-500 mr-4"></div>
+        <h2 class="text-2xl font-bold text-gray-800">Program Unggulan</h2>
+      </div>
+
+      <div class="space-y-4">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-lg font-semibold mb-2 text-emerald-700">
+            Kajian Sains & Islam
+          </h3>
+          <p class="text-gray-700">
+            Kajian mingguan yang membahas integrasi berbagai cabang ilmu sains
+            dengan perspektif Islam, dibawakan oleh akademisi dan ulama yang
+            kompeten di bidangnya.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-lg font-semibold mb-2 text-emerald-700">
+            Workshop Teknologi Islami
+          </h3>
+          <p class="text-gray-700">
+            Workshop praktis yang mengajarkan keterampilan teknologi dengan
+            memperhatikan aspek etika dan nilai-nilai Islam.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-lg font-semibold mb-2 text-emerald-700">
+            Seminar Ilmuwan Muslim
+          </h3>
+          <p class="text-gray-700">
+            Seminar berkala yang memperkenalkan kontribusi ilmuwan Muslim
+            sepanjang sejarah dan relevansinya dengan perkembangan sains modern.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-lg font-semibold mb-2 text-emerald-700">
+            Perpustakaan Digital
+          </h3>
+          <p class="text-gray-700">
+            Koleksi buku, jurnal, dan artikel tentang sains dan teknologi dalam
+            perspektif Islam yang dapat diakses secara online.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}

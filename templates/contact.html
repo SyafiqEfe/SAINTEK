@@ -1,207 +1,293 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <div class="bg-emerald-700 py-16 text-white">
-    <div class="container mx-auto px-4 text-center">
-        <h1 class="text-3xl md:text-4xl font-bold mb-4">Hubungi Kami</h1>
-        <p class="text-lg opacity-90 max-w-3xl mx-auto">Jangan ragu untuk menghubungi kami jika Anda memiliki pertanyaan atau ingin berpartisipasi dalam kegiatan kami.</p>
-    </div>
+  <div class="container mx-auto px-4 text-center">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">Hubungi Kami</h1>
+    <p class="text-lg opacity-90 max-w-3xl mx-auto">
+      Jangan ragu untuk menghubungi kami jika Anda memiliki pertanyaan atau
+      ingin berpartisipasi dalam kegiatan kami.
+    </p>
+  </div>
 </div>
 
 <div class="container mx-auto px-4 py-12">
-    <div class="max-w-5xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Contact Information -->
-            <div>
-                <div class="flex items-center mb-6">
-                    <div class="h-1 w-16 bg-emerald-500 mr-4"></div>
-                    <h2 class="text-2xl font-bold text-gray-800">Informasi Kontak</h2>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-md mb-8">
-                    <div class="space-y-4">
-                        <div class="flex items-start">
-                            <div class="text-emerald-500 text-xl mt-1 mr-4">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-800">Alamat</h3>
-                                <p class="text-gray-600">
-                                    {% if mosque_info and mosque_info.address %}
-                                        {{ mosque_info.address }}
-                                    {% else %}
-                                        Jalan Contoh No. 123, Kecamatan, Kota, Provinsi, 12345
-                                    {% endif %}
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="text-emerald-500 text-xl mt-1 mr-4">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-800">Telepon</h3>
-                                <p class="text-gray-600">
-                                    {% if mosque_info and mosque_info.phone %}
-                                        {{ mosque_info.phone }}
-                                    {% else %}
-                                        +62 812 3456 7890
-                                    {% endif %}
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="text-emerald-500 text-xl mt-1 mr-4">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-800">Email</h3>
-                                <p class="text-gray-600">
-                                    {% if mosque_info and mosque_info.email %}
-                                        {{ mosque_info.email }}
-                                    {% else %}
-                                        info@masjiddigital.id
-                                    {% endif %}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Social Media -->
-                <div class="flex items-center mb-6">
-                    <div class="h-1 w-16 bg-emerald-500 mr-4"></div>
-                    <h2 class="text-2xl font-bold text-gray-800">Media Sosial</h2>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-md mb-8">
-                    <div class="flex space-x-4">
-                        {% if mosque_info and mosque_info.facebook %}
-                            <a href="{{ mosque_info.facebook }}" class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-blue-700 transition">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                        {% else %}
-                            <a href="#" class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-blue-700 transition">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                        {% endif %}
-                        
-                        {% if mosque_info and mosque_info.twitter %}
-                            <a href="{{ mosque_info.twitter }}" class="bg-blue-400 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-blue-500 transition">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        {% else %}
-                            <a href="#" class="bg-blue-400 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-blue-500 transition">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        {% endif %}
-                        
-                        {% if mosque_info and mosque_info.instagram %}
-                            <a href="{{ mosque_info.instagram }}" class="bg-pink-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-pink-700 transition">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        {% else %}
-                            <a href="#" class="bg-pink-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-pink-700 transition">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        {% endif %}
-                        
-                        {% if mosque_info and mosque_info.youtube %}
-                            <a href="{{ mosque_info.youtube }}" class="bg-red-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-red-700 transition">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        {% else %}
-                            <a href="#" class="bg-red-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-red-700 transition">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        {% endif %}
-                    </div>
-                </div>
-                
-                <!-- Location Map -->
-                <div class="flex items-center mb-6">
-                    <div class="h-1 w-16 bg-emerald-500 mr-4"></div>
-                    <h2 class="text-2xl font-bold text-gray-800">Lokasi</h2>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="aspect-w-16 aspect-h-9 h-64">
-                        {% if mosque_info and mosque_info.google_maps_link %}
-                            <iframe src="{{ mosque_info.google_maps_link }}" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        {% else %}
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2896677556673!2d106.83018331537605!3d-6.225760995493312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3f3e37ed413%3A0x3ee9a9c6c5b7b247!2sMonumen%20Nasional!5e0!3m2!1sid!2sid!4v1649827853925!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Contact Form -->
-            <div>
-                <div class="flex items-center mb-6">
-                    <div class="h-1 w-16 bg-emerald-500 mr-4"></div>
-                    <h2 class="text-2xl font-bold text-gray-800">Kirim Pesan</h2>
-                </div>
-                
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <form action="#">
-                        <div class="mb-4">
-                            <label for="name" class="block text-gray-700 text-sm font-medium mb-2">Nama Lengkap</label>
-                            <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-emerald-500 focus:border-emerald-500" required>
-                        </div>
-                        
-                        <div class="mb-4">
-                            <label for="email" class="block text-gray-700 text-sm font-medium mb-2">Email</label>
-                            <input type="email" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-emerald-500 focus:border-emerald-500" required>
-                        </div>
-                        
-                        <div class="mb-4">
-                            <label for="subject" class="block text-gray-700 text-sm font-medium mb-2">Subjek</label>
-                            <input type="text" id="subject" name="subject" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-emerald-500 focus:border-emerald-500" required>
-                        </div>
-                        
-                        <div class="mb-6">
-                            <label for="message" class="block text-gray-700 text-sm font-medium mb-2">Pesan</label>
-                            <textarea id="message" name="message" rows="5" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-emerald-500 focus:border-emerald-500" required></textarea>
-                        </div>
-                        
-                        <div>
-                            <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition duration-300">
-                                <i class="fas fa-paper-plane mr-2"></i> Kirim Pesan
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                
-                <!-- FAQ Section -->
-                <div class="mt-8">
-                    <div class="flex items-center mb-6">
-                        <div class="h-1 w-16 bg-emerald-500 mr-4"></div>
-                        <h2 class="text-2xl font-bold text-gray-800">FAQ</h2>
-                    </div>
-                    
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <div class="space-y-4">
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-800 mb-2">Bagaimana cara mengikuti kajian?</h3>
-                                <p class="text-gray-600">Anda dapat mengikuti kajian secara langsung di masjid kami atau melalui live streaming di kanal YouTube kami.</p>
-                            </div>
-                            
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-800 mb-2">Apakah ada biaya untuk mengikuti kajian?</h3>
-                                <p class="text-gray-600">Tidak, semua kajian yang kami selenggarakan dapat diikuti secara gratis.</p>
-                            </div>
-                            
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-800 mb-2">Bagaimana cara berdonasi?</h3>
-                                <p class="text-gray-600">Anda dapat berdonasi melalui transfer bank atau QRIS yang tersedia di halaman Donasi.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Contact Information -->
+      <div>
+        <div class="flex items-center mb-6">
+          <div class="h-1 w-16 bg-emerald-500 mr-4"></div>
+          <h2 class="text-2xl font-bold text-gray-800">Informasi Kontak</h2>
         </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="text-emerald-500 text-xl mt-1 mr-4">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-800">Alamat</h3>
+                <p class="text-gray-600">
+                  {% if mosque_info and mosque_info.address %} {{
+                  mosque_info.address }} {% else %} Jalan Contoh No. 123,
+                  Kecamatan, Kota, Provinsi, 12345 {% endif %}
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="text-emerald-500 text-xl mt-1 mr-4">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-800">Telepon</h3>
+                <p class="text-gray-600">
+                  {% if mosque_info and mosque_info.phone %} {{
+                  mosque_info.phone }} {% else %} +62 812 3456 7890 {% endif %}
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="text-emerald-500 text-xl mt-1 mr-4">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-800">Email</h3>
+                <p class="text-gray-600">
+                  {% if mosque_info and mosque_info.email %} {{
+                  mosque_info.email }} {% else %} info@masjiddigital.id {% endif
+                  %}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Media -->
+        <div class="flex items-center mb-6">
+          <div class="h-1 w-16 bg-emerald-500 mr-4"></div>
+          <h2 class="text-2xl font-bold text-gray-800">Media Sosial</h2>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+          <div class="flex space-x-4">
+            {% if mosque_info and mosque_info.facebook %}
+            <a
+              href="{{ mosque_info.facebook }}"
+              class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-blue-700 transition"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            {% else %}
+            <a
+              href="#"
+              class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-blue-700 transition"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            {% endif %} {% if mosque_info and mosque_info.twitter %}
+            <a
+              href="{{ mosque_info.twitter }}"
+              class="bg-blue-400 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-blue-500 transition"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
+            {% else %}
+            <a
+              href="#"
+              class="bg-blue-400 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-blue-500 transition"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
+            {% endif %} {% if mosque_info and mosque_info.instagram %}
+            <a
+              href="{{ mosque_info.instagram }}"
+              class="bg-pink-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-pink-700 transition"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            {% else %}
+            <a
+              href="#"
+              class="bg-pink-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-pink-700 transition"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            {% endif %} {% if mosque_info and mosque_info.youtube %}
+            <a
+              href="{{ mosque_info.youtube }}"
+              class="bg-red-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-red-700 transition"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+            {% else %}
+            <a
+              href="#"
+              class="bg-red-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-red-700 transition"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Location Map -->
+        <div class="flex items-center mb-6">
+          <div class="h-1 w-16 bg-emerald-500 mr-4"></div>
+          <h2 class="text-2xl font-bold text-gray-800">Lokasi</h2>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <div class="aspect-w-16 aspect-h-9 h-64">
+            {% if mosque_info and mosque_info.google_maps_link %}
+            <iframe
+              src="{{ mosque_info.google_maps_link }}"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            {% else %}
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2896677556673!2d106.83018331537605!3d-6.225760995493312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3f3e37ed413%3A0x3ee9a9c6c5b7b247!2sMonumen%20Nasional!5e0!3m2!1sid!2sid!4v1649827853925!5m2!1sid!2sid"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div>
+        <div class="flex items-center mb-6">
+          <div class="h-1 w-16 bg-emerald-500 mr-4"></div>
+          <h2 class="text-2xl font-bold text-gray-800">Kirim Pesan</h2>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <form action="#">
+            <div class="mb-4">
+              <label
+                for="name"
+                class="block text-gray-700 text-sm font-medium mb-2"
+                >Nama Lengkap</label
+              >
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-emerald-500 focus:border-emerald-500"
+                required
+              />
+            </div>
+
+            <div class="mb-4">
+              <label
+                for="email"
+                class="block text-gray-700 text-sm font-medium mb-2"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-emerald-500 focus:border-emerald-500"
+                required
+              />
+            </div>
+
+            <div class="mb-4">
+              <label
+                for="subject"
+                class="block text-gray-700 text-sm font-medium mb-2"
+                >Subjek</label
+              >
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-emerald-500 focus:border-emerald-500"
+                required
+              />
+            </div>
+
+            <div class="mb-6">
+              <label
+                for="message"
+                class="block text-gray-700 text-sm font-medium mb-2"
+                >Pesan</label
+              >
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-emerald-500 focus:border-emerald-500"
+                required
+              ></textarea>
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition duration-300"
+              >
+                <i class="fas fa-paper-plane mr-2"></i> Kirim Pesan
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="mt-8">
+          <div class="flex items-center mb-6">
+            <div class="h-1 w-16 bg-emerald-500 mr-4"></div>
+            <h2 class="text-2xl font-bold text-gray-800">FAQ</h2>
+          </div>
+
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="space-y-4">
+              <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">
+                  Bagaimana cara mengikuti kajian?
+                </h3>
+                <p class="text-gray-600">
+                  Anda dapat mengikuti kajian secara langsung di masjid kami
+                  atau melalui live streaming di kanal YouTube kami.
+                </p>
+              </div>
+
+              <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">
+                  Apakah ada biaya untuk mengikuti kajian?
+                </h3>
+                <p class="text-gray-600">
+                  Tidak, semua kajian yang kami selenggarakan dapat diikuti
+                  secara gratis.
+                </p>
+              </div>
+
+              <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">
+                  Bagaimana cara berdonasi?
+                </h3>
+                <p class="text-gray-600">
+                  Anda dapat berdonasi melalui transfer bank atau QRIS yang
+                  tersedia di halaman Donasi.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 {% endblock %}

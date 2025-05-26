@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <h1>{{ title }}</h1>
+
+    {% if lectures.items %}
+    <ul>
+      {% for lecture in lectures.items %}
+      <li>
+        <h3>{{ lecture.title }}</h3>
+        <p>Tanggal: {{ lecture.date.strftime('%d %B %Y') }}</p>
+        <p>
+          <a href="{{ lecture.youtube_link }}" target="_blank">Tonton Video</a>
+        </p>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <div>
+      {% if lectures.has_prev %}
+      <a href="{{ url_for('lecture.archive', page=lectures.prev_num) }}"
+        >Sebelumnya</a
+      >
+      {% endif %}
+      <span>Halaman {{ lectures.page }} dari {{ lectures.pages }}</span>
+      {% if lectures.has_next %}
+      <a href="{{ url_for('lecture.archive', page=lectures.next_num) }}"
+        >Berikutnya</a
+      >
+      {% endif %}
+    </div>
+    {% else %}
+    <p>Tidak ada arsip kajian tersedia.</p>
+    {% endif %}
+  </body>
+</html>
