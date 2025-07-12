@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold">Data Cash Flow Masjid</h1>
+        {% if current_user.is_authenticated and current_user.is_admin %}
+        <a href="{{ url_for('cashflow.add') }}" class="btn-primary">Tambah Data</a>
+        {% endif %}
+    </div>
+    <div class="mb-4 p-4 bg-emerald-100 rounded shadow flex items-center">
+        <span class="font-semibold text-lg mr-2">Saldo Saat Ini:</span>
+        <span class="text-2xl font-bold text-emerald-600">Rp {{ '{:,.0f}'.format(saldo) }}</span>
+    </div>
+    <table class="min-w-full bg-white rounded shadow">
+        <thead>
+            <tr>
+                <th class="py-2 px-4 border-b">Tanggal</th>
+                <th class="py-2 px-4 border-b">Tipe</th>
+                <th class="py-2 px-4 border-b">Jumlah</th>
+                <th class="py-2 px-4 border-b">Deskripsi</th>
+                <th class="py-2 px-4 border-b">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in cashflows %}
+            <tr>
+                <td class="py-2 px-4 border-b">{{ c.date.strftime('%Y-%m-%d') }}</td>
+                <td class="py-2 px-4 border-b">
+                    {% if c.type == 'income' %}
+                        <span class="text-green-600 font-semibold">Pemasukan</span>
+                    {% else %}
+                        <span class="text-red-600 font-semibold">Pengeluaran</span>
+                    {% endif %}
+                </td>
+                <td class="py-2 px-4 border-b">Rp {{ '{:,.0f}'.format(c.amount) }}</td>
+                <td class="py-2 px-4 border-b">{{ c.description }}</td>
+                <td class="py-2 px-4 border-b">
+                    {% if current_user.is_authenticated and current_user.is_admin %}
+                    <a href="{{ url_for('cashflow.edit', id=c.id) }}" class="text-blue-500 hover:underline mr-2">Edit</a>
+                    <form action="{{ url_for('cashflow.delete', id=c.id) }}" method="post" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus data ini?');">
+                        <button type="submit" class="text-red-500 hover:underline">Hapus</button>
+                    </form>
+                    {% endif %}
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5" class="text-center py-4">Belum ada data cash flow.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
