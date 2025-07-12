@@ -159,3 +159,37 @@ def archive():
         lectures=lectures,
         title="Arsip Kajian"
     )
+
+@lecture_bp.route('/add', methods=['GET', 'POST'])
+@login_required
+def add():
+    if not current_user.is_admin:
+        flash('Hanya admin yang dapat menambah kajian.', 'danger')
+        return redirect(url_for('lecture.index'))
+    form = LectureForm()
+    form.category_id.choices = [(c.id, c.name) for c in LectureCategory.query.all()]
+    if form.validate_on_submit():
+        lecture = Lecture(
+            title=form.title.data,
+            description=form.description.data,
+            date=form.date.data,
+            duration=form.duration.data,
+            location=form.location.data,
+            speaker=form.speaker.data,
+            youtube_link=form.youtube_link.data,
+            category_id=form.category_id.data
+        )
+        # Handle file uploads if needed (image, materials_file)
+        if form.image.data:
+            filename = secure_filename(form.image.data.filename)
+            form.image.data.save(os.path.join(current_app.root_path, 'static/uploads/lectures', filename))
+            lecture.image = filename
+        if form.materials_file.data:
+            filename = secure_filename(form.materials_file.data.filename)
+            form.materials_file.data.save(os.path.join(current_app.root_path, 'static/uploads/lectures', filename))
+            lecture.materials_file = filename
+        db.session.add(lecture)
+        db.session.commit()
+        flash('Kajian berhasil ditambahkan.', 'success')
+        return redirect(url_for('lecture.index'))
+    return render_template('lectures/add.html', form=form)

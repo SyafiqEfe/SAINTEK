@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mx-auto px-4 py-8 max-w-lg">
+    <h1 class="text-2xl font-bold mb-6">Tambah Kajian</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="mb-4">
+            {{ form.title.label(class="block mb-1 font-semibold") }}
+            {{ form.title(class="w-full border rounded px-3 py-2") }}
+            {% for error in form.title.errors %}<span class="text-red-500 text-sm">{{ error }}</span>{% endfor %}
+        </div>
+        <div class="mb-4">
+            {{ form.description.label(class="block mb-1 font-semibold") }}
+            {{ form.description(class="w-full border rounded px-3 py-2") }}
+            {% for error in form.description.errors %}<span class="text-red-500 text-sm">{{ error }}</span>{% endfor %}
+        </div>
+        <div class="mb-4">
+            {{ form.date.label(class="block mb-1 font-semibold") }}
+            {{ form.date(class="w-full border rounded px-3 py-2") }}
+            {% for error in form.date.errors %}<span class="text-red-500 text-sm">{{ error }}</span>{% endfor %}
+        </div>
+        <div class="mb-4">
+            {{ form.duration.label(class="block mb-1 font-semibold") }}
+            {{ form.duration(class="w-full border rounded px-3 py-2") }}
+            {% for error in form.duration.errors %}<span class="text-red-500 text-sm">{{ error }}</span>{% endfor %}
+        </div>
+        <div class="mb-4">
+            {{ form.location.label(class="block mb-1 font-semibold") }}
+            {{ form.location(class="w-full border rounded px-3 py-2") }}
+            {% for error in form.location.errors %}<span class="text-red-500 text-sm">{{ error }}</span>{% endfor %}
+        </div>
+        <div class="mb-4">
+            {{ form.speaker.label(class="block mb-1 font-semibold") }}
+            {{ form.speaker(class="w-full border rounded px-3 py-2") }}
+            {% for error in form.speaker.errors %}<span class="text-red-500 text-sm">{{ error }}</span>{% endfor %}
+        </div>
+        <div class="mb-4">
+            {{ form.youtube_link.label(class="block mb-1 font-semibold") }}
+            {{ form.youtube_link(class="w-full border rounded px-3 py-2") }}
+            {% for error in form.youtube_link.errors %}<span class="text-red-500 text-sm">{{ error }}</span>{% endfor %}
+        </div>
+        <div class="mb-4">
+            {{ form.materials_file.label(class="block mb-1 font-semibold") }}
+            {{ form.materials_file(class="w-full border rounded px-3 py-2") }}
+            {% for error in form.materials_file.errors %}<span class="text-red-500 text-sm">{{ error }}</span>{% endfor %}
+        </div>
+        <div class="mb-4">
+            {{ form.image.label(class="block mb-1 font-semibold") }}
+            {{ form.image(class="w-full border rounded px-3 py-2") }}
+            {% for error in form.image.errors %}<span class="text-red-500 text-sm">{{ error }}</span>{% endfor %}
+        </div>
+        <div class="mb-4">
+            {{ form.category_id.label(class="block mb-1 font-semibold") }}
+            {{ form.category_id(class="w-full border rounded px-3 py-2") }}
+            {% for error in form.category_id.errors %}<span class="text-red-500 text-sm">{{ error }}</span>{% endfor %}
+        </div>
+        <div class="flex justify-end">
+            <a href="{{ url_for('lecture.index') }}" class="btn-outline mr-2">Batal</a>
+            {{ form.submit(class="btn-primary") }}
+        </div>
+    </form>
+</div>
+{% endblock %}

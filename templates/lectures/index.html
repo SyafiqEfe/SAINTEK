@@ -16,6 +16,11 @@
             <a href="{{ url_for('lecture.archive') }}" class="border-2 border-white text-white hover:bg-emerald-600 font-medium py-2 px-4 rounded-lg transition duration-300">
                 <i class="fas fa-video mr-2"></i> Arsip Video
             </a>
+            {% if current_user.is_authenticated and current_user.is_admin %}
+            <a href="{{ url_for('lecture.add') }}" class="btn-primary">
+                <i class="fas fa-plus mr-2"></i> Tambah Kajian
+            </a>
+            {% endif %}
         </div>
     </div>
 </div>

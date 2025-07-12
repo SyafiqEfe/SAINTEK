@@ -7,6 +7,7 @@ from routes.auth_routes import auth_bp
 from routes.lecture_routes import lecture_bp
 from routes.article_routes import article_bp
 from routes.gallery_routes import gallery_bp
+from routes.cashflow_routes import cashflow_bp
 from datetime import datetime
 import os
 
@@ -30,6 +31,7 @@ def create_app(config_class=Config):
     app.register_blueprint(lecture_bp, url_prefix='/lectures')
     app.register_blueprint(article_bp, url_prefix='/articles')
     app.register_blueprint(gallery_bp, url_prefix='/gallery')
+    app.register_blueprint(cashflow_bp, url_prefix='/')
     
     # Create database tables
     with app.app_context():

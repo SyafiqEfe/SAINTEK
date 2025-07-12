@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if title %}{{ title }} | {% endif %}Sistem Informasi Masjid</title>
+    <title>{% if title %}{{ title }} | {% endif %}Masjid Al-Mahally</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -92,7 +92,7 @@
                 <div class="flex items-center space-x-2">
                     <a href="{{ url_for('main.index') }}" class="flex items-center">
                         <span class="text-2xl text-emerald-500"><i class="fas fa-mosque"></i></span>
-                        <span class="ml-2 text-xl font-bold">Masjid<span class="text-emerald-500">Digital</span></span>
+                        <span class="ml-2 text-xl font-bold">Masjid<span class="text-emerald-500">AL-Mahally</span></span>
                     </a>
                 </div>
                 
@@ -100,8 +100,7 @@
                 <div class="hidden md:flex space-x-6">
                     <a href="{{ url_for('main.index') }}" class="text-gray-700 hover:text-emerald-500 transition duration-300">Beranda</a>
                     <a href="{{ url_for('lecture.index') }}" class="text-gray-700 hover:text-emerald-500 transition duration-300">Kajian</a>
-                    <a href="{{ url_for('article.index') }}" class="text-gray-700 hover:text-emerald-500 transition duration-300">Artikel</a>
-                    <a href="{{ url_for('gallery.index') }}" class="text-gray-700 hover:text-emerald-500 transition duration-300">Galeri</a>
+                    <a href="{{ url_for('cashflow.index') }}" class="text-gray-700 hover:text-emerald-500 transition duration-300">Cash Flow</a>
                     <a href="{{ url_for('main.about') }}" class="text-gray-700 hover:text-emerald-500 transition duration-300">Tentang</a>
                     <a href="{{ url_for('main.contact') }}" class="text-gray-700 hover:text-emerald-500 transition duration-300">Kontak</a>
                 </div>
@@ -136,8 +135,7 @@
                 <div class="flex flex-col space-y-3">
                     <a href="{{ url_for('main.index') }}" class="text-gray-700 hover:text-emerald-500 py-2">Beranda</a>
                     <a href="{{ url_for('lecture.index') }}" class="text-gray-700 hover:text-emerald-500 py-2">Kajian</a>
-                    <a href="{{ url_for('article.index') }}" class="text-gray-700 hover:text-emerald-500 py-2">Artikel</a>
-                    <a href="{{ url_for('gallery.index') }}" class="text-gray-700 hover:text-emerald-500 py-2">Galeri</a>
+                    <a href="{{ url_for('cashflow.index') }}" class="text-gray-700 hover:text-emerald-500 py-2">Cash Flow</a>
                     <a href="{{ url_for('main.about') }}" class="text-gray-700 hover:text-emerald-500 py-2">Tentang</a>
                     <a href="{{ url_for('main.contact') }}" class="text-gray-700 hover:text-emerald-500 py-2">Kontak</a>
                     
@@ -203,8 +201,6 @@
                     <ul class="space-y-2">
                         <li><a href="{{ url_for('main.index') }}" class="text-gray-300 hover:text-white transition">Beranda</a></li>
                         <li><a href="{{ url_for('lecture.index') }}" class="text-gray-300 hover:text-white transition">Kajian</a></li>
-                        <li><a href="{{ url_for('article.index') }}" class="text-gray-300 hover:text-white transition">Artikel</a></li>
-                        <li><a href="{{ url_for('gallery.index') }}" class="text-gray-300 hover:text-white transition">Galeri</a></li>
                         <li><a href="{{ url_for('main.about') }}" class="text-gray-300 hover:text-white transition">Tentang</a></li>
                         <li><a href="{{ url_for('main.contact') }}" class="text-gray-300 hover:text-white transition">Kontak</a></li>
                     </ul>
