@@ -6,7 +6,7 @@ class LectureCategory(db.Model):
     name = db.Column(db.String(100), nullable=False, unique=True)
     description = db.Column(db.Text, nullable=True)
     lectures = db.relationship('Lecture', backref='category', lazy='dynamic')
-    
+
     def __repr__(self):
         return f'<LectureCategory {self.name}>'
 
@@ -21,12 +21,12 @@ class Lecture(db.Model):
     youtube_link = db.Column(db.String(255), nullable=True)
     materials_file = db.Column(db.String(255), nullable=True)
     image = db.Column(db.String(255), nullable=True)
-    
+
     category_id = db.Column(db.Integer, db.ForeignKey('lecture_category.id'))
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    
+    # Hapus baris ini: user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
-    
+
     def __repr__(self):
         return f'<Lecture {self.title}>'

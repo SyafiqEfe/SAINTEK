@@ -1,4 +1,4 @@
-from models.user import User
+# from models.user import User # Hapus baris ini
 from models.lecture import Lecture, LectureCategory
 from models.article import Article, ArticleCategory
 from models.gallery import GalleryImage, GalleryCategory

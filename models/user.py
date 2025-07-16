@@ -1,9 +1,10 @@
-from extensions import db, login_manager
-from flask_login import UserMixin
+from extensions import db # Hapus login_manager
+# from flask_login import UserMixin # Hapus baris ini
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 
-class User(UserMixin, db.Model):
+# Hapus UserMixin dari sini jika Anda tidak lagi menggunakan Flask-Login
+class User(db.Model): # Hapus UserMixin dari sini
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True, nullable=False)
     email = db.Column(db.String(120), index=True, unique=True, nullable=False)
@@ -20,10 +21,11 @@ class User(UserMixin, db.Model):
         
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
-    
+        
     def __repr__(self):
         return f'<User {self.username}>'
 
-@login_manager.user_loader
-def load_user(id):
-    return User.query.get(int(id))
+# Hapus seluruh bagian ini karena login_manager tidak lagi digunakan
+# @login_manager.user_loader
+# def load_user(id):
+#     return User.query.get(int(id))

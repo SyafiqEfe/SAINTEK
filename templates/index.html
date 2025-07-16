@@ -1,247 +1,340 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <!-- Hero Section -->
-<section class="relative bg-gradient-to-r from-emerald-700 to-emerald-900 text-white py-16">
-    <div class="absolute inset-0 bg-black opacity-40"></div>
-    <div class="container mx-auto px-4 relative z-10">
-        <div class="max-w-3xl mx-auto text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4 slide-in">Masjid AL-Mahally</h1>
-            <p class="text-xl md:text-2xl mb-8 opacity-90 slide-in">Pusat Kajian Sains dan Teknologi dalam Perspektif Islam</p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4 slide-in">
-                <a href="{{ url_for('lecture.index') }}" class="btn-secondary">
-                    <i class="fas fa-calendar-alt mr-2"></i> Jadwal Kajian
-                </a>
-                <a href="{{ url_for('article.index') }}" class="bg-white text-emerald-700 hover:bg-gray-100 font-medium py-2 px-4 rounded transition duration-300">
-                    <i class="fas fa-book-open mr-2"></i> Artikel Edukasi
-                </a>
-            </div>
-        </div>
+<section
+  class="relative bg-gradient-to-r from-emerald-700 to-emerald-900 text-white py-16"
+>
+  <div class="absolute inset-0 bg-black opacity-40"></div>
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 slide-in">
+        Masjid AL-Mahally
+      </h1>
+      <p class="text-xl md:text-2xl mb-8 opacity-90 slide-in">
+        Pusat Kajian Sains dan Teknologi dalam Perspektif Islam
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 slide-in">
+        <a href="{{ url_for('lecture.index') }}" class="btn-secondary">
+          <i class="fas fa-calendar-alt mr-2"></i> Jadwal Kajian
+        </a>
+        <a
+          href="{{ url_for('article.index') }}"
+          class="bg-white text-emerald-700 hover:bg-gray-100 font-medium py-2 px-4 rounded transition duration-300"
+        >
+          <i class="fas fa-book-open mr-2"></i> Artikel Edukasi
+        </a>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Quote of the Day -->
 {% if quote %}
 <section class="py-8 bg-emerald-50">
-    <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center p-6 bg-white rounded-lg shadow-sm border-l-4 border-emerald-500">
-            <h2 class="text-sm uppercase tracking-wider text-emerald-600 mb-2 font-semibold">Quote Harian</h2>
-            <p class="text-xl italic mb-4 arabic">{{ quote.quote_text }}</p>
-            <div class="text-gray-600">
-                <span class="font-semibold">{{ quote.source }}</span>
-                {% if quote.reference %}
-                    <span class="text-gray-500"> ({{ quote.reference }})</span>
-                {% endif %}
-            </div>
-        </div>
+  <div class="container mx-auto px-4">
+    <div
+      class="max-w-4xl mx-auto text-center p-6 bg-white rounded-lg shadow-sm border-l-4 border-emerald-500"
+    >
+      <h2
+        class="text-sm uppercase tracking-wider text-emerald-600 mb-2 font-semibold"
+      >
+        Quote Harian
+      </h2>
+      <p class="text-xl italic mb-4 arabic">{{ quote.quote_text }}</p>
+      <div class="text-gray-600">
+        <span class="font-semibold">{{ quote.source }}</span>
+        {% if quote.reference %}
+        <span class="text-gray-500"> ({{ quote.reference }})</span>
+        {% endif %}
+      </div>
     </div>
+  </div>
 </section>
 {% endif %}
 
 <!-- About Section -->
 <section class="py-12 bg-white">
-    <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-                <h2 class="text-3xl font-bold mb-6 text-gray-800">Tentang Masjid Al-Mahally</h2>
-                <div class="h-1 w-20 bg-emerald-500 mb-6"></div>
-                <p class="text-gray-600 mb-4">Masjid Digital adalah pusat kajian Islam yang memfokuskan pada integrasi sains dan teknologi dalam perspektif Islam. Kami berkomitmen untuk mengedukasi masyarakat tentang kontribusi Islam dalam perkembangan sains dan teknologi serta relevansinya dengan kehidupan modern.</p>
-                <p class="text-gray-600 mb-6">Melalui berbagai kajian, artikel, dan kegiatan, kami berupaya menghidupkan kembali semangat ilmiah yang telah diwariskan oleh para ilmuwan Muslim sepanjang sejarah.</p>
-                <a href="{{ url_for('main.about') }}" class="btn-outline">
-                    <i class="fas fa-info-circle mr-2"></i> Pelajari Lebih Lanjut
-                </a>
-            </div>
-            <div class="rounded-lg overflow-hidden shadow-lg">
-                <img src="/static/img/WhatsApp Image 2025-07-04 at 11.26.57_0505ffd6.jpg" alt="Masjid" class="w-full h-auto">
-            </div>
-        </div>
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-3xl font-bold mb-6 text-gray-800">
+          Tentang Masjid Al-Mahally
+        </h2>
+        <div class="h-1 w-20 bg-emerald-500 mb-6"></div>
+        <p class="text-gray-600 mb-4">
+          Masjid Digital adalah pusat kajian Islam yang memfokuskan pada
+          integrasi sains dan teknologi dalam perspektif Islam. Kami berkomitmen
+          untuk mengedukasi masyarakat tentang kontribusi Islam dalam
+          perkembangan sains dan teknologi serta relevansinya dengan kehidupan
+          modern.
+        </p>
+        <p class="text-gray-600 mb-6">
+          Melalui berbagai kajian, artikel, dan kegiatan, kami berupaya
+          menghidupkan kembali semangat ilmiah yang telah diwariskan oleh para
+          ilmuwan Muslim sepanjang sejarah.
+        </p>
+        <a href="{{ url_for('main.about') }}" class="btn-outline">
+          <i class="fas fa-info-circle mr-2"></i> Pelajari Lebih Lanjut
+        </a>
+      </div>
+      <div class="rounded-lg overflow-hidden shadow-lg">
+        <img
+          src="/static/img/WhatsApp Image 2025-07-04 at 11.26.57_0505ffd6.jpg"
+          alt="Masjid"
+          class="w-full h-auto"
+        />
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Upcoming Lectures -->
 <section class="py-12 bg-gray-50">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-10">
-            <h2 class="text-3xl font-bold text-gray-800 mb-2">Kajian Mendatang</h2>
-            <div class="h-1 w-20 bg-emerald-500 mb-4 mx-auto"></div>
-            <p class="text-gray-600 max-w-2xl mx-auto">Jadilah bagian dari diskusi dan pembelajaran yang inspiratif melalui kajian-kajian kami yang mengintegrasikan perspektif Islam dengan sains dan teknologi modern.</p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {% if upcoming_lectures %}
-                {% for lecture in upcoming_lectures %}
-                    <div class="card group">
-                        <div class="relative h-48 bg-emerald-100 overflow-hidden">
-                            {% if lecture.image %}
-                                <img src="{{ url_for('static', filename='uploads/lectures/' + lecture.image) }}" alt="{{ lecture.title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            {% else %}
-                                <div class="flex items-center justify-center h-full text-emerald-500">
-                                    <i class="fas fa-chalkboard-teacher text-5xl"></i>
-                                </div>
-                            {% endif %}
-                            {% if lecture.category %}
-                                <span class="absolute top-4 right-4 bg-emerald-500 text-white text-xs py-1 px-2 rounded">
-                                    {{ lecture.category.name }}
-                                </span>
-                            {% endif %}
-                        </div>
-                        <div class="p-6">
-                            <div class="flex items-center text-gray-500 text-sm mb-2">
-                                <i class="far fa-calendar-alt mr-2"></i>
-                                <span>{{ lecture.date.strftime('%d %B %Y, %H:%M') }}</span>
-                            </div>
-                            <h3 class="text-lg font-semibold mb-2 group-hover:text-emerald-600 transition">
-                                <a href="{{ url_for('lecture.detail', id=lecture.id) }}">{{ lecture.title }}</a>
-                            </h3>
-                            {% if lecture.description %}
-                                <p class="text-gray-600 text-sm mb-4 line-clamp-2">{{ lecture.description }}</p>
-                            {% endif %}
-                            <div class="flex items-center justify-between mt-4">
-                                <div class="flex items-center text-gray-500 text-sm">
-                                    <i class="fas fa-user-tie mr-2"></i>
-                                    <span>{{ lecture.speaker or 'TBA' }}</span>
-                                </div>
-                                <a href="{{ url_for('lecture.detail', id=lecture.id) }}" class="text-emerald-500 hover:text-emerald-700 text-sm font-medium">
-                                    Detail <i class="fas fa-chevron-right ml-1 text-xs"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            {% else %}
-                <div class="col-span-full text-center py-8">
-                    <p class="text-gray-500">Belum ada jadwal kajian mendatang. Silakan cek kembali nanti.</p>
-                </div>
-            {% endif %}
-        </div>
-        
-        <div class="text-center mt-8">
-            <a href="{{ url_for('lecture.index') }}" class="btn-outline">
-                <i class="fas fa-calendar-alt mr-2"></i> Lihat Semua Kajian
-            </a>
-        </div>
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl font-bold text-gray-800 mb-2">Kajian Mendatang</h2>
+      <div class="h-1 w-20 bg-emerald-500 mb-4 mx-auto"></div>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Jadilah bagian dari diskusi dan pembelajaran yang inspiratif melalui
+        kajian-kajian kami yang mengintegrasikan perspektif Islam dengan sains
+        dan teknologi modern.
+      </p>
     </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% if upcoming_lectures %} {% for lecture in upcoming_lectures %}
+      <div class="card group">
+        <div class="relative h-48 bg-emerald-100 overflow-hidden">
+          {% if lecture.image %}
+          <img
+            src="{{ url_for('static', filename='uploads/lectures/' + lecture.image) }}"
+            alt="{{ lecture.title }}"
+            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+          />
+          {% else %}
+          <div class="flex items-center justify-center h-full text-emerald-500">
+            <i class="fas fa-chalkboard-teacher text-5xl"></i>
+          </div>
+          {% endif %} {% if lecture.category %}
+          <span
+            class="absolute top-4 right-4 bg-emerald-500 text-white text-xs py-1 px-2 rounded"
+          >
+            {{ lecture.category.name }}
+          </span>
+          {% endif %}
+        </div>
+        <div class="p-6">
+          <div class="flex items-center text-gray-500 text-sm mb-2">
+            <i class="far fa-calendar-alt mr-2"></i>
+            <span>{{ lecture.date.strftime('%d %B %Y, %H:%M') }}</span>
+          </div>
+          <h3
+            class="text-lg font-semibold mb-2 group-hover:text-emerald-600 transition"
+          >
+            <a href="{{ url_for('lecture.detail', id=lecture.id) }}"
+              >{{ lecture.title }}</a
+            >
+          </h3>
+          {% if lecture.description %}
+          <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+            {{ lecture.description }}
+          </p>
+          {% endif %}
+          <div class="flex items-center justify-between mt-4">
+            <div class="flex items-center text-gray-500 text-sm">
+              <i class="fas fa-user-tie mr-2"></i>
+              <span>{{ lecture.speaker or 'TBA' }}</span>
+            </div>
+            <a
+              href="{{ url_for('lecture.detail', id=lecture.id) }}"
+              class="text-emerald-500 hover:text-emerald-700 text-sm font-medium"
+            >
+              Detail <i class="fas fa-chevron-right ml-1 text-xs"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %} {% else %}
+      <div class="col-span-full text-center py-8">
+        <p class="text-gray-500">
+          Belum ada jadwal kajian mendatang. Silakan cek kembali nanti.
+        </p>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="text-center mt-8">
+      <a href="{{ url_for('lecture.index') }}" class="btn-outline">
+        <i class="fas fa-calendar-alt mr-2"></i> Lihat Semua Kajian
+      </a>
+    </div>
+  </div>
 </section>
 
 <!-- Latest Articles -->
 <section class="py-12 bg-white">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-10">
-            <h2 class="text-3xl font-bold text-gray-800 mb-2">Artikel Terbaru</h2>
-            <div class="h-1 w-20 bg-emerald-500 mb-4 mx-auto"></div>
-            <p class="text-gray-600 max-w-2xl mx-auto">Eksplorasi artikel edukatif tentang kontribusi Islam dalam perkembangan sains dan teknologi, serta relevansinya dengan dunia modern.</p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {% if latest_articles %}
-                {% for article in latest_articles %}
-                    <div class="card group">
-                        <div class="relative h-48 bg-emerald-100 overflow-hidden">
-                            {% if article.image %}
-                                <img src="{{ url_for('static', filename='uploads/articles/' + article.image) }}" alt="{{ article.title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                            {% else %}
-                                <div class="flex items-center justify-center h-full text-emerald-500">
-                                    <i class="fas fa-book-open text-5xl"></i>
-                                </div>
-                            {% endif %}
-                            {% if article.category %}
-                                <span class="absolute top-4 right-4 bg-amber-500 text-white text-xs py-1 px-2 rounded">
-                                    {{ article.category.name }}
-                                </span>
-                            {% endif %}
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-lg font-semibold mb-2 group-hover:text-emerald-600 transition">
-                                <a href="{{ url_for('article.detail', id=article.id) }}">{{ article.title }}</a>
-                            </h3>
-                            {% if article.summary %}
-                                <p class="text-gray-600 text-sm mb-4 line-clamp-3">{{ article.summary }}</p>
-                            {% endif %}
-                            <div class="flex justify-between items-center mt-4">
-                                <div class="flex items-center text-gray-500 text-sm">
-                                    <i class="far fa-clock mr-2"></i>
-                                    <span>{{ article.created_at.strftime('%d %b %Y') }}</span>
-                                </div>
-                                <a href="{{ url_for('article.detail', id=article.id) }}" class="text-emerald-500 hover:text-emerald-700 text-sm font-medium">
-                                    Baca Selengkapnya <i class="fas fa-chevron-right ml-1 text-xs"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            {% else %}
-                <div class="col-span-full text-center py-8">
-                    <p class="text-gray-500">Belum ada artikel yang dipublikasikan. Silakan cek kembali nanti.</p>
-                </div>
-            {% endif %}
-        </div>
-        
-        <div class="text-center mt-8">
-            <a href="{{ url_for('article.index') }}" class="btn-outline">
-                <i class="fas fa-book-open mr-2"></i> Lihat Semua Artikel
-            </a>
-        </div>
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl font-bold text-gray-800 mb-2">Artikel Terbaru</h2>
+      <div class="h-1 w-20 bg-emerald-500 mb-4 mx-auto"></div>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Eksplorasi artikel edukatif tentang kontribusi Islam dalam perkembangan
+        sains dan teknologi, serta relevansinya dengan dunia modern.
+      </p>
     </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {% if latest_articles %} {% for article in latest_articles %}
+      <div class="card group">
+        <div class="relative h-48 bg-emerald-100 overflow-hidden">
+          {% if article.image %}
+          <img
+            src="{{ url_for('static', filename='uploads/articles/' + article.image) }}"
+            alt="{{ article.title }}"
+            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+          />
+          {% else %}
+          <div class="flex items-center justify-center h-full text-emerald-500">
+            <i class="fas fa-book-open text-5xl"></i>
+          </div>
+          {% endif %} {% if article.category %}
+          <span
+            class="absolute top-4 right-4 bg-amber-500 text-white text-xs py-1 px-2 rounded"
+          >
+            {{ article.category.name }}
+          </span>
+          {% endif %}
+        </div>
+        <div class="p-6">
+          <h3
+            class="text-lg font-semibold mb-2 group-hover:text-emerald-600 transition"
+          >
+            <a href="{{ url_for('article.detail', id=article.id) }}"
+              >{{ article.title }}</a
+            >
+          </h3>
+          {% if article.summary %}
+          <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+            {{ article.summary }}
+          </p>
+          {% endif %}
+          <div class="flex justify-between items-center mt-4">
+            <div class="flex items-center text-gray-500 text-sm">
+              <i class="far fa-clock mr-2"></i>
+              <span>{{ article.created_at.strftime('%d %b %Y') }}</span>
+            </div>
+            <a
+              href="{{ url_for('article.detail', id=article.id) }}"
+              class="text-emerald-500 hover:text-emerald-700 text-sm font-medium"
+            >
+              Baca Selengkapnya
+              <i class="fas fa-chevron-right ml-1 text-xs"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %} {% else %}
+      <div class="col-span-full text-center py-8">
+        <p class="text-gray-500">
+          Belum ada artikel yang dipublikasikan. Silakan cek kembali nanti.
+        </p>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="text-center mt-8">
+      <a href="{{ url_for('article.index') }}" class="btn-outline">
+        <i class="fas fa-book-open mr-2"></i> Lihat Semua Artikel
+      </a>
+    </div>
+  </div>
 </section>
 
 <!-- Islamic Science & Technology Contribution -->
 <section class="py-12 bg-gradient-to-r from-amber-50 to-amber-100">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-10">
-            <h2 class="text-3xl font-bold text-gray-800 mb-2">Kontribusi Islam dalam Sains & Teknologi</h2>
-            <div class="h-1 w-20 bg-amber-500 mb-4 mx-auto"></div>
-            <p class="text-gray-600 max-w-2xl mx-auto">Peradaban Islam telah memberikan kontribusi yang luar biasa dalam perkembangan sains dan teknologi dunia.</p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
-                <div class="text-amber-500 text-3xl mb-4">
-                    <i class="fas fa-flask"></i>
-                </div>
-                <h3 class="text-lg font-semibold mb-2">Kimia</h3>
-                <p class="text-gray-600 text-sm">Jabir ibn Hayyan dan Al-Razi mengembangkan metode eksperimental dan klasifikasi zat kimia yang menjadi dasar kimia modern.</p>
-            </div>
-            
-            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
-                <div class="text-amber-500 text-3xl mb-4">
-                    <i class="fas fa-calculator"></i>
-                </div>
-                <h3 class="text-lg font-semibold mb-2">Matematika</h3>
-                <p class="text-gray-600 text-sm">Al-Khawarizmi menciptakan aljabar dan mengembangkan konsep algoritma yang menjadi dasar komputasi modern.</p>
-            </div>
-            
-            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
-                <div class="text-amber-500 text-3xl mb-4">
-                    <i class="fas fa-stethoscope"></i>
-                </div>
-                <h3 class="text-lg font-semibold mb-2">Kedokteran</h3>
-                <p class="text-gray-600 text-sm">Ibnu Sina menulis Canon of Medicine yang menjadi rujukan medis di Eropa selama berabad-abad.</p>
-            </div>
-            
-            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
-                <div class="text-amber-500 text-3xl mb-4">
-                    <i class="fas fa-star"></i>
-                </div>
-                <h3 class="text-lg font-semibold mb-2">Astronomi</h3>
-                <p class="text-gray-600 text-sm">Al-Battani dan Al-Biruni membuat perhitungan astronomis yang akurat dan mengembangkan instrumen astronomi.</p>
-            </div>
-        </div>
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl font-bold text-gray-800 mb-2">
+        Kontribusi Islam dalam Sains & Teknologi
+      </h2>
+      <div class="h-1 w-20 bg-amber-500 mb-4 mx-auto"></div>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Peradaban Islam telah memberikan kontribusi yang luar biasa dalam
+        perkembangan sains dan teknologi dunia.
+      </p>
     </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <div class="text-amber-500 text-3xl mb-4">
+          <i class="fas fa-flask"></i>
+        </div>
+        <h3 class="text-lg font-semibold mb-2">Kimia</h3>
+        <p class="text-gray-600 text-sm">
+          Jabir ibn Hayyan dan Al-Razi mengembangkan metode eksperimental dan
+          klasifikasi zat kimia yang menjadi dasar kimia modern.
+        </p>
+      </div>
+
+      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <div class="text-amber-500 text-3xl mb-4">
+          <i class="fas fa-calculator"></i>
+        </div>
+        <h3 class="text-lg font-semibold mb-2">Matematika</h3>
+        <p class="text-gray-600 text-sm">
+          Al-Khawarizmi menciptakan aljabar dan mengembangkan konsep algoritma
+          yang menjadi dasar komputasi modern.
+        </p>
+      </div>
+
+      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <div class="text-amber-500 text-3xl mb-4">
+          <i class="fas fa-stethoscope"></i>
+        </div>
+        <h3 class="text-lg font-semibold mb-2">Kedokteran</h3>
+        <p class="text-gray-600 text-sm">
+          Ibnu Sina menulis Canon of Medicine yang menjadi rujukan medis di
+          Eropa selama berabad-abad.
+        </p>
+      </div>
+
+      <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+        <div class="text-amber-500 text-3xl mb-4">
+          <i class="fas fa-star"></i>
+        </div>
+        <h3 class="text-lg font-semibold mb-2">Astronomi</h3>
+        <p class="text-gray-600 text-sm">
+          Al-Battani dan Al-Biruni membuat perhitungan astronomis yang akurat
+          dan mengembangkan instrumen astronomi.
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Call to Action -->
 <section class="py-12 bg-emerald-700 text-white">
-    <div class="container mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold mb-4">Bergabunglah Dengan Komunitas Kami</h2>
-        <p class="text-lg mb-8 max-w-2xl mx-auto opacity-90">Jadilah bagian dari komunitas yang menjembatani ilmu pengetahuan modern dengan nilai-nilai Islam.</p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="{{ url_for('auth.register') }}" class="bg-white text-emerald-700 hover:bg-gray-100 font-medium py-3 px-6 rounded-lg transition duration-300">
-                <i class="fas fa-user-plus mr-2"></i> Daftar Sekarang
-            </a>
-            <a href="{{ url_for('main.contact') }}" class="border-2 border-white text-white hover:bg-emerald-600 font-medium py-3 px-6 rounded-lg transition duration-300">
-                <i class="fas fa-envelope mr-2"></i> Hubungi Kami
-            </a>
-        </div>
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-4">Bergabunglah Dengan Komunitas Kami</h2>
+    <p class="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+      Jadilah bagian dari komunitas yang menjembatani ilmu pengetahuan modern
+      dengan nilai-nilai Islam.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      {# Hapus tautan ini:
+      <a
+        href="{{ url_for('auth.register') }}"
+        class="bg-white text-emerald-700 hover:bg-gray-100 font-medium py-3 px-6 rounded-lg transition duration-300"
+      >
+        #} {# <i class="fas fa-user-plus mr-2"></i> Daftar Sekarang #} {#
+      </a>
+      #}
+      <a
+        href="{{ url_for('main.contact') }}"
+        class="border-2 border-white text-white hover:bg-emerald-600 font-medium py-3 px-6 rounded-lg transition duration-300"
+      >
+        <i class="fas fa-envelope mr-2"></i> Hubungi Kami
+      </a>
     </div>
+  </div>
 </section>
 {% endblock %}
