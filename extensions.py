@@ -1,9 +1,15 @@
+# extensions.py
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
+from flask_migrate import Migrate
+from flask_mail import Mail
+from flask_moment import Moment
+# from flask_login import LoginManager # Marked for removal/commenting
 
-# Initialize extensions
 db = SQLAlchemy()
-login_manager = LoginManager()
-login_manager.login_view = 'auth.login'
-login_manager.login_message = 'Please log in to access this page.'
-login_manager.login_message_category = 'info'
+migrate = Migrate()
+mail = Mail()
+moment = Moment()
+# login_manager = LoginManager() # Marked for removal/commenting
+# login_manager.login_view = 'auth.login' # Marked for removal/commenting
+# login_manager.login_message = 'Please log in to access this page.' # Marked for removal/commenting
+# login_manager.login_message_category = 'info' # Marked for removal/commenting
