@@ -37,7 +37,7 @@ def create_app(config_class=Config):
   app.register_blueprint(lecture_bp, url_prefix='/lectures')
   app.register_blueprint(article_bp, url_prefix='/articles')
   app.register_blueprint(gallery_bp, url_prefix='/gallery')
-  app.register_blueprint(cashflow_bp, url_prefix='/')
+  app.register_blueprint(cashflow_bp, url_prefix='/cashflow')
 
   # Create database tables
   with app.app_context():

@@ -10,7 +10,7 @@ from sqlalchemy import extract, text
 
 lecture_bp = Blueprint('lecture', __name__)
 
-@lecture_bp.route('/')
+@lecture_bp.route('/lecture')
 def index():
     page = request.args.get('page', 1, type=int)
     category_id = request.args.get('category', type=int)
