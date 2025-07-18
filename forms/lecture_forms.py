@@ -11,7 +11,7 @@ class LectureCategoryForm(FlaskForm):
 class LectureForm(FlaskForm):
     title = StringField('Lecture Title', validators=[DataRequired(), Length(max=200)])
     description = TextAreaField('Description', validators=[Optional()])
-    date = DateTimeField('Date and Time', format='%Y-%m-%d %H:%M', validators=[DataRequired()])
+    date = DateTimeField('Tanggal & Waktu', format='%Y-%m-%d %H:%M', validators=[DataRequired()])
     duration = IntegerField('Duration (minutes)', validators=[Optional(), NumberRange(min=1)])
     location = StringField('Location', validators=[Optional(), Length(max=200)])
     speaker = StringField('Speaker', validators=[Optional(), Length(max=100)])
@@ -24,5 +24,5 @@ class LectureForm(FlaskForm):
         Optional(),
         FileAllowed(['jpg', 'png', 'jpeg'], 'Images only!')
     ])
-    category_id = SelectField('Category', coerce=int, validators=[DataRequired()])
+    category_id = SelectField('Kategori', coerce=int, validators=[DataRequired()])
     submit = SubmitField('Save Lecture')
